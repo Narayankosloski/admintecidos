@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin · Moldes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+<div id="catalogo-app">
+  <div class="ct-shell">
+    <aside class="ct-sidebar">
+      <div class="ct-brand"><span class="ct-brand-dot"></span>Admin · Moldes</div>
+      <nav class="ct-nav" id="ct-nav"></nav>
+      <div class="ct-sidebar-bottom" id="ct-authbar"></div>
+    </aside>
+    <main class="ct-content">
+      <div id="ct-root"><div class="ct-loading">Carregando...</div></div>
+    </main>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

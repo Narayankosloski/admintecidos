@@ -1,0 +1,13 @@
+/* Reaproveita quase tudo de style.css (mesmas classes ct-*). Aqui só o que é exclusivo do admin. */
+
+.ct-mat-row { display: grid; grid-template-columns: 1fr 90px 90px 32px; gap: 8px; margin-bottom: 8px; align-items: center; }
+.ct-mat-row input { padding: 8px 9px; border: 1px solid var(--line); border-radius: 6px; font-size: 13px; font-family: 'Work Sans', sans-serif; }
+.ct-mat-remove { width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--line); background: transparent; color: var(--danger); cursor: pointer; }
+.ct-mat-remove:hover { background: var(--bg); }
+
+.ct-badge-ativo { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 3px; color: var(--sage); background: #E1E6DA; }
+.ct-badge-inativo { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 3px; color: var(--ink-soft); background: var(--line); }
+
+.ct-admin-denied { max-width: 460px; text-align: center; padding: 48px 16px; margin: 0 auto; }
+.ct-admin-denied b { display: block; font-family: 'Fraunces', serif; font-size: 19px; margin-bottom: 8px; }
+.ct-admin-denied p { color: var(--ink-soft); font-size: 14px; }
