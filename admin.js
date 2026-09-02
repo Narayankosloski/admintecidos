@@ -205,8 +205,21 @@
     if (get('ct-f-desc') !== undefined) v.descricao = get('ct-f-desc');
     var ativoEl = document.getElementById('ct-f-ativo');
     if (ativoEl) v.ativo = ativoEl.checked;
+    // Os campos de materiais (linhas dinâmicas) NÃO são sincronizados aqui de propósito:
+    // esta função roda no topo de todo render(), inclusive logo depois de adicionar/remover
+    // uma linha em memória — se ela também lesse as linhas do DOM (que nesse momento ainda
+    // são as antigas, de antes do clique), reescreveria state.draft.materiais por cima e
+    // desfazia a linha recém-adicionada. Por isso os materiais têm sua própria função,
+    // chamada só nos pontos em que isso é seguro (ver syncMateriaisFromDOM).
+  }
 
+  // Lê os valores atualmente digitados nas linhas de materiais e devolve o array —
+  // chamada explicitamente (nunca pelo syncDraftFromDOM genérico) para não apagar
+  // linhas recém adicionadas/removidas em memória antes do próximo render.
+  function syncMateriaisFromDOM() {
+    if (!state.formOpen || !state.draft) return;
     var rows = document.querySelectorAll('.ct-mat-row');
+    if (!rows.length) return;
     var materiais = [];
     rows.forEach(function (row) {
       var nome = row.querySelector('.ct-mat-nome');
@@ -218,17 +231,17 @@
         unidade: un ? un.value : 'm'
       });
     });
-    if (materiais.length) v.materiais = materiais;
+    state.draft.materiais = materiais;
   }
 
   function addMaterialRow() {
-    syncDraftFromDOM();
+    syncMateriaisFromDOM();
     state.draft.materiais.push({ nome: '', quantidade: '', unidade: 'm' });
     render();
   }
 
   function removeMaterialRow(idx) {
-    syncDraftFromDOM();
+    syncMateriaisFromDOM();
     state.draft.materiais.splice(idx, 1);
     if (state.draft.materiais.length === 0) state.draft.materiais.push({ nome: '', quantidade: '', unidade: 'm' });
     render();
@@ -236,6 +249,7 @@
 
   function submitForm() {
     syncDraftFromDOM();
+    syncMateriaisFromDOM();
     var v = state.draft;
     var errEl = document.getElementById('ct-form-error');
     if (!v.nome || !v.nome.trim()) { errEl.textContent = 'Informe o nome do molde.'; return; }
