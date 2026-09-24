@@ -1,13 +1,52 @@
-/* Reaproveita quase tudo de style.css (mesmas classes ct-*). Aqui só o que é exclusivo do admin. */
+/* Estilos específicos do painel Admin · Moldes (complementa style.css) */
 
-.ct-mat-row { display: grid; grid-template-columns: 1fr 90px 90px 32px; gap: 8px; margin-bottom: 8px; align-items: center; }
-.ct-mat-row input { padding: 8px 9px; border: 1px solid var(--line); border-radius: 6px; font-size: 13px; font-family: 'Work Sans', sans-serif; }
-.ct-mat-remove { width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--line); background: transparent; color: var(--danger); cursor: pointer; }
-.ct-mat-remove:hover { background: var(--bg); }
+.ct-admin-denied { text-align: center; padding: 48px 16px; max-width: 420px; margin: 0 auto; }
+.ct-admin-denied b { display: block; font-family: 'Fraunces', serif; font-size: 20px; margin-bottom: 8px; }
+.ct-admin-denied p { color: var(--ink-soft); font-size: 14px; margin: 0 0 18px; }
 
-.ct-badge-ativo { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 3px; color: var(--sage); background: #E1E6DA; }
-.ct-badge-inativo { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 3px; color: var(--ink-soft); background: var(--line); }
+.ct-badge-ativo,
+.ct-badge-inativo {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+.ct-badge-ativo { color: var(--sage); background: #E1E6DA; }
+.ct-badge-inativo { color: var(--ink-soft); background: var(--bg); }
 
-.ct-admin-denied { max-width: 460px; text-align: center; padding: 48px 16px; margin: 0 auto; }
-.ct-admin-denied b { display: block; font-family: 'Fraunces', serif; font-size: 19px; margin-bottom: 8px; }
-.ct-admin-denied p { color: var(--ink-soft); font-size: 14px; }
+.ct-mat-row {
+  display: grid;
+  grid-template-columns: 1fr 90px 70px 28px;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.ct-mat-row input,
+.ct-mat-row select {
+  padding: 8px 9px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #fff;
+  font-size: 13.5px;
+  color: var(--ink);
+  font-family: 'Work Sans', sans-serif;
+  width: 100%;
+}
+.ct-mat-row input:focus,
+.ct-mat-row select:focus { outline: none; border-color: var(--thread); }
+.ct-mat-qtd { font-family: 'IBM Plex Mono', monospace; text-align: right; }
+.ct-mat-remove {
+  width: 28px;
+  height: 34px;
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 6px;
+}
+.ct-mat-remove:hover { background: var(--bg); color: var(--danger); }
+
+@media (max-width: 560px) {
+  .ct-mat-row { grid-template-columns: 1fr 1fr; grid-template-areas: "nome nome" "qtd un" "remove remove"; }
+}
